@@ -1,0 +1,19 @@
+{
+  "name": "sample-packaged-app",
+  "version": "1.0.0",
+  "description": "Simple packaged app that can be used to test installing Firefox OS apps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sole/sample-packaged-app.git"
+  },
+  "author": "sole",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/sole/sample-packaged-app/issues"
+  },
+  "homepage": "https://github.com/sole/sample-packaged-app"
+}
