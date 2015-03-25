@@ -1,0 +1,64 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: #7C70DC;
+	color: #3E32A2;
+	padding: 0.5rem;
+	font-family: monospace;
+	text-transform: uppercase;
+	height: 100%;
+}
+
+main {
+	display: block;
+	background: #3E32A2;
+	color: #7C70DC;
+	padding: 0.5rem;
+	height: 100%;
+}
+
+h1 {
+	text-align: center;
+	margin: 0.5rem 0;
+}
+
+h1:before, h1:after {
+	content: "****";
+}
+
+p {
+	font-size: 1.2rem;
+	margin: 0.25rem 0;
+}
+
+@keyframes cursorflashing {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+#cursor {
+	background: #7C70DC;
+	display: inline-block;
+	width: 0.5rem;
+	height: 1rem;
+	animation-duration: 1s;
+	animation-name: cursorflashing;
+	animation-iteration-count: infinite;
+}
+
