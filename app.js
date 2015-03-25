@@ -20,21 +20,39 @@
 	}
 
 	function initDemoEffect(element) {
-		var w = 200;
+		var w = 300;
 		var h = 200;
 		var lastRenderTime;
 
 		var scene = new THREE.Scene();
 		var camera = new THREE.PerspectiveCamera( 75, w / h, 0.1, 1000 );
 
-		var renderer = new THREE.WebGLRenderer({ alpha: true });
+		var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 		renderer.setSize( w, h );
 		renderer.setClearColor( 0x000000, 0);
 		element.appendChild(renderer.domElement);
 		
-		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-		var mesh = new THREE.Mesh( geometry, material );
+		// for the red and white material
+		var materialRed = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+		var materialWhite = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+		var ballMaterials = [ materialRed, materialWhite ];
+		var amigaBallMaterial = new THREE.MeshFaceMaterial(ballMaterials);
+		var geometryPieces = new THREE.SphereGeometry( 2, 16, 8 );
+
+		for ( var i = 0, l = geometryPieces.faces.length; i < l; i ++ ) {
+			var face = geometryPieces.faces[ i ];
+			var index = (i % 4);
+			if(index === 0 || index === 3) {
+				index = 0;
+			} else {
+				index = 1;
+			}
+			face.materialIndex = index;
+		}
+
+		geometryPieces.materials = ballMaterials;
+
+		var mesh = new THREE.Mesh( geometryPieces, amigaBallMaterial );
 		scene.add( mesh );
 
 		camera.position.z = 5;
@@ -53,8 +71,9 @@
 
 			var alpha = t * 0.002;
 			mesh.position.y = Math.sin(alpha * 2);
-			mesh.position.x = Math.cos(alpha);
+			mesh.position.x = 1.5 * Math.cos(alpha);
 			mesh.rotation.y += elapsed * 0.001;
+			mesh.rotation.z += elapsed * 0.001;
 			renderer.render( scene, camera );
 			
 		}
