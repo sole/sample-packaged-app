@@ -8,7 +8,8 @@
 		<title>sample-packaged-app</title>
 
 		<!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-		so we use a script file. -->
+		so we use script files -->
+		<script src="js/three.js" defer></script>
 		<script src="app.js" defer></script>
 	</head>
 
@@ -18,6 +19,7 @@
 			<p id="status"></p>
 			<p id="ready">Ready.</p>
 			<p id="cursor"></p>
+			<div id="demoordie"></div>
 		</main>
 	</body>
 
