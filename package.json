@@ -1,6 +1,6 @@
 {
   "name": "sample-packaged-app",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Simple packaged app that can be used to test installing Firefox OS apps",
   "main": "app.js",
   "scripts": {
